@@ -1,8 +1,8 @@
 local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
-       {Title = "By Father Rixhu", Description = "Font Provided By Limo"},
-       {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 8, Type = "default"}
+       {Title = "By Father Rixhu, Insta ID ~ Pvtrixhu", Description = "Font Provided By Limo"},
+       {OutlineColor = Color3.fromRGB(0, 0, 0), Time = 8, Type = "default"}
     )
 
 local G2L = {}
@@ -32,9 +32,9 @@ G2L["7"]["BorderSizePixel"] = 0
 G2L["7"]["TextWrapped"] = true
 G2L["7"]["TextTransparency"] = 0.41
 G2L["7"]["TextScaled"] = true
-G2L["7"]["BackgroundColor3"] = Color3.fromRGB(255, 177, 146)
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(220, 34, 34)
 G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["7"]["PlaceholderText"] = [[hate speech here]]
+G2L["7"]["PlaceholderText"] = [[Write Here]]
 G2L["7"]["Size"] = UDim2.new(0.84333, -20, 0.33938, -10)
 G2L["7"]["Position"] = UDim2.new(0, 34, 0, 47)
 G2L["7"]["Text"] = [[]]
@@ -46,12 +46,12 @@ G2L["9"] = Instance.new("TextButton", G2L["5"])
 G2L["9"]["TextWrapped"] = true
 G2L["9"]["BorderSizePixel"] = 0
 G2L["9"]["TextSize"] = 28
-G2L["9"]["BackgroundColor3"] = Color3.fromRGB(255, 231, 203)
+G2L["9"]["BackgroundColor3"] = Color3.fromRGB(249, 94, 94)
 G2L["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 G2L["9"]["Size"] = UDim2.new(0.37709, -20, 0.27187, -10)
 G2L["9"]["BackgroundTransparency"] = 0.2
 G2L["9"]["LayoutOrder"] = 5
-G2L["9"]["Text"] = [[send !! :3]]
+G2L["9"]["Text"] = [[Die !!]]
 G2L["9"]["Position"] = UDim2.new(0.28447, 10, 0.71938, 0)
 G2L["a"] = Instance.new("LocalScript", G2L["9"])
 G2L["b"] = Instance.new("UICorner", G2L["9"])
@@ -64,7 +64,7 @@ G2L["d"]["TextWrapped"] = true
 G2L["d"]["TextStrokeTransparency"] = 0.73
 G2L["d"]["BorderSizePixel"] = 0
 G2L["d"]["TextScaled"] = true
-G2L["d"]["BackgroundColor3"] = Color3.fromRGB(173, 255, 255)
+G2L["d"]["BackgroundColor3"] = Color3.fromRGB(70, 70, 232)
 G2L["d"]["TextSize"] = 14
 G2L["d"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 G2L["d"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
@@ -80,7 +80,7 @@ G2L["f"]["BorderSizePixel"] = 0
 G2L["f"]["TextSize"] = 12
 G2L["f"]["TextColor3"] = Color3.fromRGB(0, 0, 0)
 G2L["f"]["TextScaled"] = true
-G2L["f"]["BackgroundColor3"] = Color3.fromRGB(255, 139, 149)
+G2L["f"]["BackgroundColor3"] = Color3.fromRGB(141, 255, 244)
 G2L["f"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 G2L["f"]["Size"] = UDim2.new(0, 83, 0, 19)
 G2L["f"]["BackgroundTransparency"] = 0.3
