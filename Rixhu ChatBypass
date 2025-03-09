@@ -222,7 +222,7 @@ local letters = {
         local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
         local tagged = filteredMessage ~= msg
         if tagged then
-            showNotification("Msg From Rixhu", "it got tagged man i hate to say it")
+            showNotification("Sub To @LuvLimo2", "BRUH TAGS")
             textBox.Text = ""
         else
             if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
