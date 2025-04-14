@@ -232,7 +232,7 @@ local letters = {
         local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
         local tagged = filteredMessage ~= msg
         if tagged then
-            showNotification("Hell Nah !! ~", "Text Fucked")
+            showNotification("ROBLOX ID - DXRCIEERE (LIV) ~", "NUDES 💦 SERVICE AVAILABLE")
             textBox.Text = ""
         else
             if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
