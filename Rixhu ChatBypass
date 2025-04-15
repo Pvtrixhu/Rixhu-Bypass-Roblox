@@ -1,4 +1,4 @@
-local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+   local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
        {Title = "By Father Rixhu, Insta ID ~ Pvtrixhu", Description = "Font Provided By Limo, youtube~ LuvLimo2"},
@@ -216,7 +216,16 @@ local letters = {
     ["7"] = "⑦",
     ["8"] = "⑧",
     ["9"] = "⑨",
-    [" "] = "  "
+    ["FUCK"] = "ＦЦＣҚ",
+    ["fuck"] = "ＦЦＣҚ",
+    ["Fuck"] = "ＦЦＣҚ",
+    ["HO"] = "нØ",
+    ["Ho"] = "нØ",
+    ["ho"] = "нØ",
+    ["hO"] = "нØ",
+    ["youtube"] = "ＹＯＵŤＵＢƐ",
+    ["Youtube"] = "ＹＯＵŤＵＢƐ",
+    ["YOUTUBE"] = "ＹＯＵŤＵＢƐ",
 }
 
     local function filter(message)
