@@ -90,6 +90,22 @@ G2L["f"]["Position"] = UDim2.new(0, 0, 0.85156, 0)
 G2L["10"] = Instance.new("UICorner", G2L["f"])
 G2L["10"]["CornerRadius"] = UDim.new(0, 2)
 G2L["11"] = Instance.new("LocalScript", G2L["f"])
+G2L["12"] = Instance.new("TextButton", G2L["2"])
+G2L["12"]["TextWrapped"] = true
+G2L["12"]["BorderSizePixel"] = 0
+G2L["12"]["TextSize"] = 14
+G2L["12"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+G2L["12"]["TextScaled"] = true
+G2L["12"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
+G2L["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["12"]["Size"] = UDim2.new(0, 20, 0, 20)
+G2L["12"]["BackgroundTransparency"] = 0.3
+G2L["12"]["BorderColor3"] = Color3.fromRGB(255, 255, 255)
+G2L["12"]["Text"] = "_"
+G2L["12"]["Position"] = UDim2.new(1, -25, 0, 5)
+G2L["13"] = Instance.new("UICorner", G2L["12"])
+G2L["13"]["CornerRadius"] = UDim.new(0, 2)
+G2L["14"] = Instance.new("LocalScript", G2L["12"])
 
 local function C_3()
     local script = G2L["3"]
@@ -272,4 +288,74 @@ local function C_11()
     button.MouseButton1Click:Connect(toggleVisibility)
 end
 task.spawn(C_11)
+local function C_14()
+    local script = G2L["14"]
+    local main = script.Parent.Parent -- The Frame
+    local button = script.Parent
+    local minimized = false
+    local tweenService = game:GetService("TweenService")
+
+    -- Find the special ImageLabel
+    local specialImage
+    for _, child in ipairs(main:GetDescendants()) do
+        if child:IsA("ImageLabel") and child.Image == "rbxassetid://113532136902880" then
+            specialImage = child
+            break
+        end
+    end
+
+    -- Gather all UI elements to hide (except button and frame)
+    local contentToToggle = {}
+    for _, child in ipairs(main:GetDescendants()) do
+        if (child:IsA("TextBox") or child:IsA("TextButton") or child:IsA("TextLabel")) and child ~= button then
+            table.insert(contentToToggle, child)
+        end
+    end
+
+    -- Save original background color
+    local originalColor = main.BackgroundColor3
+
+    button.MouseButton1Click:Connect(function()
+        minimized = not minimized
+
+        if minimized then
+            -- Hide content
+            for _, ui in ipairs(contentToToggle) do
+                ui.Visible = false
+            end
+            if specialImage then
+                specialImage.Visible = false
+            end
+
+            -- Animate frame smaller and change color
+            local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+            local tween = tweenService:Create(main, tweenInfo, {
+                Size = UDim2.new(0, 120, 0, 30),
+                BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            })
+            tween:Play()
+
+        else
+            -- Animate back to full size and change color
+            local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+            local tween = tweenService:Create(main, tweenInfo, {
+                Size = UDim2.new(0, 316, 0, 128),
+                BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            })
+            tween:Play()
+
+            tween.Completed:Connect(function()
+                -- Restore content after animation
+                for _, ui in ipairs(contentToToggle) do
+                    ui.Visible = true
+                end
+                if specialImage then
+                    specialImage.Visible = true
+                end
+            end)
+        end
+    end)
+end
+task.spawn(C_14)
+
 return G2L["1"], require
