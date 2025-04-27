@@ -20,7 +20,7 @@ G2L["4"]["CornerRadius"] = UDim.new(0, 4)
 G2L["5"] = Instance.new("ImageLabel", G2L["2"])
 G2L["5"]["BorderSizePixel"] = 0
 G2L["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["5"]["Image"] = [[rbxassetid://113532136902880]]
+G2L["5"]["Image"] = [[rbxassetid://103434281255283]]
 G2L["5"]["Size"] = UDim2.new(0, 316, 0, 128)
 G2L["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 G2L["5"]["LayoutOrder"] = -6
@@ -30,7 +30,7 @@ G2L["7"] = Instance.new("TextBox", G2L["5"])
 G2L["7"]["PlaceholderColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["7"]["BorderSizePixel"] = 0
 G2L["7"]["TextWrapped"] = true
-G2L["7"]["TextTransparency"] = 0.41
+G2L["7"]["TextTransparency"] = 1
 G2L["7"]["TextScaled"] = true
 G2L["7"]["BackgroundColor3"] = Color3.fromRGB(220, 34, 34)
 G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
@@ -44,6 +44,7 @@ G2L["8"] = Instance.new("UICorner", G2L["7"])
 G2L["8"]["CornerRadius"] = UDim.new(0, 2)
 G2L["9"] = Instance.new("TextButton", G2L["5"])
 G2L["9"]["TextWrapped"] = true
+G2L["9"]["TextTransparency"] = 1
 G2L["9"]["BorderSizePixel"] = 0
 G2L["9"]["TextSize"] = 28
 G2L["9"]["BackgroundColor3"] = Color3.fromRGB(220, 34, 34)
@@ -99,13 +100,36 @@ G2L["12"]["TextScaled"] = true
 G2L["12"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
 G2L["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 G2L["12"]["Size"] = UDim2.new(0, 20, 0, 20)
-G2L["12"]["BackgroundTransparency"] = 0.3
+G2L["12"]["BackgroundTransparency"] = 0.25
 G2L["12"]["BorderColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["12"]["Text"] = "_"
 G2L["12"]["Position"] = UDim2.new(1, -25, 0, 5)
 G2L["13"] = Instance.new("UICorner", G2L["12"])
 G2L["13"]["CornerRadius"] = UDim.new(0, 2)
 G2L["14"] = Instance.new("LocalScript", G2L["12"])
+G2L["15"] = Instance.new("TextButton", G2L["2"])
+G2L["15"]["Name"] = "KeepTextCheckbox"
+G2L["15"]["Size"] = UDim2.new(0, 20, 0, 20)
+G2L["15"]["Position"] = UDim2.new(1, -25, 1, -25)
+G2L["15"]["BackgroundColor3"] = Color3.fromRGB(30, 30, 30)
+G2L["15"]["BackgroundTransparency"] = 0.2
+G2L["15"]["Text"] = ""
+G2L["15"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+G2L["15"]["TextSize"] = 14
+G2L["15"]["Font"] = Enum.Font.SourceSansBold
+G2L["15"]["Visible"] = true
+G2L["16"] = Instance.new("UICorner", G2L["15"])
+G2L["16"]["CornerRadius"] = UDim.new(0, 3)
+G2L["17"] = Instance.new("TextLabel", G2L["15"])
+G2L["17"]["Name"] = "Tick"
+G2L["17"]["Size"] = UDim2.new(1, 0, 1, 0)
+G2L["17"]["BackgroundTransparency"] = 1
+G2L["17"]["Text"] = "🩸"
+G2L["17"]["TextColor3"] = Color3.fromRGB(0, 255, 0)
+G2L["17"]["TextTransparency"] = 1 -- Start hidden
+G2L["17"]["Font"] = Enum.Font.SourceSansBold
+G2L["17"]["TextScaled"] = true
+G2L["18"] = Instance.new("LocalScript", G2L["15"])
 
 local function C_3()
     local script = G2L["3"]
@@ -245,20 +269,28 @@ local letters = {
         StarterGui:SetCore("SendNotification", {Title = title, Text = text, Duration = 5})
     end
     local function sendChat(msg)
-        local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
-        local tagged = filteredMessage ~= msg
-        if tagged then
-            showNotification("HELL NAH !!", "TEXT FUCKED")
-            textBox.Text = ""
+    local filteredMessage = game:GetService("Chat"):FilterStringForBroadcast(msg, LocalPlayer)
+    local tagged = filteredMessage ~= msg
+    local keepTextCheckbox = script.Parent.Parent.Parent:FindFirstChild("KeepTextCheckbox")
+    local keepTextTick = keepTextCheckbox and keepTextCheckbox:FindFirstChild("Tick")
+
+    if tagged then
+        showNotification("HELL NAH !!", "TEXT FUCKED")
+        textBox.Text = ""
+    else
+        if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
+            ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(msg, "All")
         else
-            if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
-                ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents").SayMessageRequest:FireServer(msg, "All")
-            else
-                chat:SendAsync(msg)
-            end
+            chat:SendAsync(msg)
+        end
+        
+        -- ONLY clear if checkbox is NOT checked
+        if keepTextTick and keepTextTick.TextTransparency == 1 then
             textBox.Text = ""
         end
     end
+end
+
     local function processText()
         local inputText = textBox.Text
         local convertedText = filter(inputText)
@@ -298,7 +330,7 @@ local function C_14()
     -- Find the special ImageLabel
     local specialImage
     for _, child in ipairs(main:GetDescendants()) do
-        if child:IsA("ImageLabel") and child.Image == "rbxassetid://113532136902880" then
+        if child:IsA("ImageLabel") and child.Image == "rbxassetid://103434281255283" then
             specialImage = child
             break
         end
@@ -357,5 +389,41 @@ local function C_14()
     end)
 end
 task.spawn(C_14)
+local function C_18()
+    local script = G2L["18"]
+    local button = script.Parent
+    local tick = button:WaitForChild("Tick")
+    local keepText = false -- Start UNCHECKED
+
+    local TweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+    local function updateTick()
+        local tween = TweenService:Create(tick, tweenInfo, {TextTransparency = keepText and 0 or 1})
+        tween:Play()
+    end
+
+    updateTick()
+
+    button.MouseButton1Click:Connect(function()
+        keepText = not keepText
+        updateTick()
+    end)
+
+    -- Hook into your send button
+    local sendButtonScript = G2L["a"] -- assuming your send button is ["a"]
+    sendButtonScript.Parent.MouseButton1Click:Connect(function()
+        local textBox = sendButtonScript.Parent.Parent.TextBox
+        local inputText = textBox.Text
+        local convertedText = sendButtonScript.Parent.Parent.TextBox.Parent.Parent.filter(inputText)
+        sendButtonScript.Parent.Parent.TextBox.Parent.Parent.sendChat(convertedText)
+
+        -- Only clear text if "keepText" is FALSE (unchecked)
+        if not keepText then
+            textBox.Text = ""
+        end
+    end)
+end
+task.spawn(C_18)
 
 return G2L["1"], require
