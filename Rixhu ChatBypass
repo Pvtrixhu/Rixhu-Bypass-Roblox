@@ -1,6 +1,35 @@
+local SoundService = game:GetService("SoundService")
+local RunService = game:GetService("RunService")
 
+local StartupSound = Instance.new("Sound")
+StartupSound.SoundId = "rbxassetid://506001681"
+StartupSound.Volume = 1
+StartupSound.Parent = SoundService
 
-   local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+StartupSound:Play()
+
+local function fadeOutSound(sound, fadeTime)
+    local startTime = tick()
+    local startVolume = sound.Volume
+
+    local connection
+    connection = RunService.Heartbeat:Connect(function()
+        local elapsed = tick() - startTime
+        local alpha = math.clamp(elapsed / fadeTime, 0, 1)
+        sound.Volume = startVolume * (1 - alpha)
+
+        if alpha >= 1 then
+            connection:Disconnect()
+            sound:Stop()
+            sound:Destroy()
+        end
+    end)
+end
+
+StartupSound.Ended:Connect(function()
+    fadeOutSound(StartupSound, 2) -- 2 seconds fade out
+end)
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
        {Title = "By Father Rixhu, Insta ID ~ Pvtrixhu", Description = "Font Provided By Limo, youtube~ LuvLimo2"},
