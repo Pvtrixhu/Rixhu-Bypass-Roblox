@@ -39,6 +39,59 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 local G2L = {}
 G2L["1"] = Instance.new("ScreenGui", game:GetService("CoreGui"));
 G2L["2"] = Instance.new("Frame", G2L["1"])
+local TweenService = game:GetService("TweenService")
+
+-- Set starting state (small and transparent)
+G2L["2"].Size = UDim2.new(0, 0, 0, 0)
+G2L["2"].BackgroundTransparency = 1
+
+-- Create the tween info for the frame
+local frameTweenInfo = TweenInfo.new(
+    0.8, -- seconds
+    Enum.EasingStyle.Back,
+    Enum.EasingDirection.Out
+)
+
+-- Goal for frame
+local frameGoal = {
+    Size = UDim2.new(0, 316, 0, 128),
+    BackgroundTransparency = 0
+}
+
+-- Create and play frame tween
+local frameTween = TweenService:Create(G2L["2"], frameTweenInfo, frameGoal)
+frameTween:Play()
+
+-- Once the frame animation finishes, fade in the children (buttons/texts)
+frameTween.Completed:Connect(function()
+    for _, child in ipairs(G2L["2"]:GetChildren()) do
+        if child:IsA("TextButton") or child:IsA("TextLabel") then
+            -- Set initial transparency
+            child.TextTransparency = 1
+            child.BackgroundTransparency = 1
+
+            -- Tween the transparency to visible
+            local childTweenInfo = TweenInfo.new(
+                0.5, -- seconds
+                Enum.EasingStyle.Quad,
+                Enum.EasingDirection.Out
+            )
+
+            local childGoal = {
+                TextTransparency = 0,
+                BackgroundTransparency = 0
+            }
+
+            local childTween = TweenService:Create(child, childTweenInfo, childGoal)
+            
+            -- Optional: Add small delay between each child for cooler staggered effect
+            task.wait(0.1)
+
+            childTween:Play()
+        end
+    end
+end)
+
 G2L["2"]["BorderSizePixel"] = 0
 G2L["2"]["BackgroundColor3"] = Color3.fromRGB(253, 198, 255)
 G2L["2"]["Size"] = UDim2.new(0, 316, 0, 128)
