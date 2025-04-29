@@ -1,34 +1,60 @@
-local SoundService = game:GetService("SoundService")
-local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local Lighting = game:GetService("Lighting")
 
-local StartupSound = Instance.new("Sound")
-StartupSound.SoundId = "rbxassetid://506001681"
-StartupSound.Volume = 1
-StartupSound.Parent = SoundService
+local splashGui = Instance.new("ScreenGui")
+splashGui.IgnoreGuiInset = true
+splashGui.ResetOnSpawn = false
+splashGui.Name = "SplashGui"
+splashGui.Parent = CoreGui
 
-StartupSound:Play()
+local blur = Instance.new("BlurEffect")
+blur.Size = 24
+blur.Parent = Lighting
 
-local function fadeOutSound(sound, fadeTime)
-    local startTime = tick()
-    local startVolume = sound.Volume
+local customOverlay = Instance.new("ImageLabel")
+customOverlay.Size = UDim2.new(1, 0, 1, 0)
+customOverlay.BackgroundTransparency = 1
+customOverlay.Image = "rbxassetid://99245105579918"
+customOverlay.ImageTransparency = 0.75
+customOverlay.ScaleType = Enum.ScaleType.Stretch
+customOverlay.ZIndex = 1
+customOverlay.Parent = splashGui
 
-    local connection
-    connection = RunService.Heartbeat:Connect(function()
-        local elapsed = tick() - startTime
-        local alpha = math.clamp(elapsed / fadeTime, 0, 1)
-        sound.Volume = startVolume * (1 - alpha)
+local splashText = Instance.new("TextLabel")
+splashText.Size = UDim2.new(1, 0, 1, 0)
+splashText.BackgroundTransparency = 1
+splashText.TextScaled = true
+splashText.TextColor3 = Color3.fromRGB(0, 0, 0)
+splashText.Font = Enum.Font.DenkOne
+splashText.Text = "R I X H U"
+splashText.TextTransparency = 1
+splashText.ZIndex = 2
+splashText.Parent = splashGui
 
-        if alpha >= 1 then
-            connection:Disconnect()
-            sound:Stop()
-            sound:Destroy()
-        end
-    end)
-end
+local splashSound = Instance.new("Sound")
+splashSound.SoundId = "rbxassetid://9072301639"
+splashSound.Volume = 1
+splashSound.Looped = false
+splashSound.Parent = splashGui
+splashSound:Play()
 
-StartupSound.Ended:Connect(function()
-    fadeOutSound(StartupSound, 2) -- 2 seconds fade out
-end)
+TweenService:Create(blur, TweenInfo.new(1.5), {Size = 24}):Play()
+TweenService:Create(customOverlay, TweenInfo.new(1.5), {ImageTransparency = 0.3}):Play()
+TweenService:Create(splashText, TweenInfo.new(1.5), {TextTransparency = 0}):Play()
+
+task.wait(3)
+
+TweenService:Create(blur, TweenInfo.new(1.5), {Size = 0}):Play()
+TweenService:Create(customOverlay, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
+TweenService:Create(splashText, TweenInfo.new(1.5), {TextTransparency = 1}):Play()
+TweenService:Create(splashSound, TweenInfo.new(1.5), {Volume = 0}):Play()
+
+task.wait(1.5)
+
+blur:Destroy()
+splashGui:Destroy()
+
 local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
@@ -114,11 +140,11 @@ G2L["7"] = Instance.new("TextBox", G2L["5"])
 G2L["7"]["PlaceholderColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["7"]["BorderSizePixel"] = 0
 G2L["7"]["TextWrapped"] = true
-G2L["7"]["TextTransparency"] = 0.41
+G2L["7"]["TextTransparency"] = 0.50
 G2L["7"]["TextScaled"] = true
-G2L["7"]["BackgroundColor3"] = Color3.fromRGB(220, 34, 34)
-G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/ComicNeueAngular.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-G2L["7"]["PlaceholderText"] = [[ｗｒｉｔｅ ｈｅｒｅ]]
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0)
+G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/DenkOne.json]])
+G2L["7"]["PlaceholderText"] = [[W R I T E  H E R E]]
 G2L["7"]["Size"] = UDim2.new(0.84333, -20, 0.33938, -10)
 G2L["7"]["Position"] = UDim2.new(0, 34, 0, 47)
 G2L["7"]["Text"] = [[]]
@@ -130,12 +156,13 @@ G2L["9"] = Instance.new("TextButton", G2L["5"])
 G2L["9"]["TextWrapped"] = true
 G2L["9"]["BorderSizePixel"] = 0
 G2L["9"]["TextSize"] = 28
-G2L["9"]["BackgroundColor3"] = Color3.fromRGB(220, 34, 34)
-G2L["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["9"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
+G2L["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Creepster.json]])
+G2L["9"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["9"]["Size"] = UDim2.new(0.37709, -20, 0.27187, -10)
 G2L["9"]["BackgroundTransparency"] = 0.2
 G2L["9"]["LayoutOrder"] = 5
-G2L["9"]["Text"] = [[DIE !!]]
+G2L["9"]["Text"] = [[DIE]]
 G2L["9"]["Position"] = UDim2.new(0.28447, 10, 0.71938, 0)
 G2L["a"] = Instance.new("LocalScript", G2L["9"])
 G2L["b"] = Instance.new("UICorner", G2L["9"])
@@ -150,12 +177,12 @@ G2L["d"]["BorderSizePixel"] = 0
 G2L["d"]["TextScaled"] = true
 G2L["d"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
 G2L["d"]["TextSize"] = 14
-G2L["d"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["d"]["FontFace"] = Font.new([[rbxasset://fonts/families/DenkOne.json]])
 G2L["d"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["d"]["BackgroundTransparency"] = 0.25
 G2L["d"]["Size"] = UDim2.new(0, 316, 0, 34)
 G2L["d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["d"]["Text"] = [[ＲＩＸＨＵ ＢＹＰＡＳＳ]]
+G2L["d"]["Text"] = [[R I X H U]]
 G2L["e"] = Instance.new("UICorner", G2L["d"])
 G2L["e"]["CornerRadius"] = UDim.new(0, 4)
 G2L["f"] = Instance.new("TextButton", G2L["2"])
@@ -165,7 +192,7 @@ G2L["f"]["TextSize"] = 12
 G2L["f"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["f"]["TextScaled"] = true
 G2L["f"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["f"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["f"]["FontFace"] = Font.new([[rbxasset://fonts/families/DenkOne.json]])
 G2L["f"]["Size"] = UDim2.new(0, 83, 0, 19)
 G2L["f"]["BackgroundTransparency"] = 0.3
 G2L["f"]["BorderColor3"] = Color3.fromRGB(255, 255, 255)
@@ -181,11 +208,11 @@ G2L["12"]["TextSize"] = 14
 G2L["12"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
 G2L["12"]["TextScaled"] = true
 G2L["12"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0)
-G2L["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+G2L["12"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]])
 G2L["12"]["Size"] = UDim2.new(0, 20, 0, 20)
-G2L["12"]["BackgroundTransparency"] = 0.25
+G2L["12"]["BackgroundTransparency"] = 0.15
 G2L["12"]["BorderColor3"] = Color3.fromRGB(255, 255, 255)
-G2L["12"]["Text"] = "_"
+G2L["12"]["Text"] = "-"
 G2L["12"]["Position"] = UDim2.new(1, -25, 0, 5)
 G2L["13"] = Instance.new("UICorner", G2L["12"])
 G2L["13"]["CornerRadius"] = UDim.new(0, 2)
