@@ -1,4 +1,3 @@
-
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 local Lighting = game:GetService("Lighting")
@@ -70,22 +69,18 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local PlayerGui = player:WaitForChild("PlayerGui")
 
--- Add blur to the lighting
 local blur = Instance.new("BlurEffect")
 blur.Size = 0
 blur.Parent = Lighting
 
--- Create GUI container
 local ScreenGui = Instance.new("ScreenGui", PlayerGui)
 ScreenGui.Name = "ScriptChooserGui"
 ScreenGui.ResetOnSpawn = false
 
--- Main container for buttons
 local container = Instance.new("Frame", ScreenGui)
 container.BackgroundTransparency = 1
 container.Size = UDim2.new(1, 0, 1, 0)
 
--- Script asset IDs
 local asset1 = "rbxassetid://128065570168183" -- Replace with actual asset ID
 local asset2 = "rbxassetid://116841022210481" -- Replace with actual asset ID
 
@@ -131,7 +126,6 @@ local function popEffect(btn)
 	end)
 end
 
--- Cleanup animation
 local function fadeOutAll()
 	TweenService:Create(blur, TweenInfo.new(0.5), {Size = 0}):Play()
 	TweenService:Create(button1, TweenInfo.new(0.5), {ImageTransparency = 1}):Play()
@@ -204,11 +198,9 @@ local frameGoal = {
     BackgroundTransparency = 0
 }
 
--- Create and play frame tween
 local frameTween = TweenService:Create(G2L["2"], frameTweenInfo, frameGoal)
 frameTween:Play()
 
--- Once the frame animation finishes, fade in the children (buttons/texts)
 frameTween.Completed:Connect(function()
     for _, child in ipairs(G2L["2"]:GetChildren()) do
         if child:IsA("TextButton") or child:IsA("TextLabel") then
@@ -640,7 +632,6 @@ local function C_18()
         updateTick()
     end)
 
-    -- Hook into your send button
     local sendButtonScript = G2L["a"] -- assuming your send button is ["a"]
     sendButtonScript.Parent.MouseButton1Click:Connect(function()
         local textBox = sendButtonScript.Parent.Parent.TextBox
@@ -1157,7 +1148,6 @@ local function C_18()
         updateTick()
     end)
 
-    -- Hook into your send button
     local sendButtonScript = G2L["a"] -- assuming your send button is ["a"]
     sendButtonScript.Parent.MouseButton1Click:Connect(function()
         local textBox = sendButtonScript.Parent.Parent.TextBox
