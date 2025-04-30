@@ -57,7 +57,7 @@ splashGui:Destroy()
 
 local SoundService = game:GetService("SoundService")
 local introSound = Instance.new("Sound")
-introSound.SoundId = "rbxassetid://5797595098"  -- 🔊 Replace with your actual sound asset ID
+introSound.SoundId = "rbxassetid://5797595098"
 introSound.Volume = 1
 introSound.PlayOnRemove = false
 introSound.Parent = SoundService
@@ -81,12 +81,12 @@ local container = Instance.new("Frame", ScreenGui)
 container.BackgroundTransparency = 1
 container.Size = UDim2.new(1, 0, 1, 0)
 
-local asset1 = "rbxassetid://128065570168183" -- Replace with actual asset ID
-local asset2 = "rbxassetid://116841022210481" -- Replace with actual asset ID
+local asset1 = "rbxassetid://128065570168183"
+local asset2 = "rbxassetid://116841022210481"
 
 local function createAssetButton(imageId)
 	local btn = Instance.new("ImageButton")
-	btn.Size = UDim2.new(0, 300, 0, 300) -- Increased to 300x300
+	btn.Size = UDim2.new(0, 300, 0, 300)
 	btn.Position = UDim2.new(0.5, 0, 0.5, 0)
 	btn.AnchorPoint = Vector2.new(0.5, 0.5)
 	btn.BackgroundTransparency = 1
