@@ -1,7 +1,7 @@
 
-local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
 local CoreGui = game:GetService(string.char(67, 111, 114, 101, 71, 117, 105))
-local _LX = game:GetService(string.char(76, 105, 103, 104, 116, 105, 110, 103))
+local Lighting = game:GetService(string.char(76, 105, 103, 104, 116, 105, 110, 103))
 
 local splashGui = Instance.new(string.char(83, 99, 114, 101, 101, 110, 71, 117, 105))
 splashGui.IgnoreGuiInset = true
@@ -9,21 +9,21 @@ splashGui.ResetOnSpawn = false
 splashGui.Name = string.char(83, 112, 108, 97, 115, 104, 71, 117, 105)
 splashGui.Parent = CoreGui
 
-local _BLR = Instance.new(string.char(66, 108, 117, 114, 69, 102, 102, 101, 99, 116))
+local blur = Instance.new(string.char(66, 108, 117, 114, 69, 102, 102, 101, 99, 116))
 blur.Size = 24
 blur.Parent = Lighting
 
 local customOverlay = Instance.new(string.char(73, 109, 97, 103, 101, 76, 97, 98, 101, 108))
 customOverlay.Size = UDim2.new(1, 0, 1, 0)
 customOverlay.BackgroundTransparency = 1
-customOverlay.Image = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 56, 53, 57, 51, 57, 50, 51, 50, 57, 56, 53, 57, 52, 53)
+customOverlay.Image = "rbxassetid://85939232985945"
 customOverlay.ImageTransparency = 0.75
 customOverlay.ScaleType = Enum.ScaleType.Stretch
 customOverlay.ZIndex = 1
 customOverlay.Parent = splashGui
 
 local splashSound = Instance.new(string.char(83, 111, 117, 110, 100))
-splashSound.SoundId = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 57, 48, 55, 50, 51, 48, 49, 54, 51, 57)
+splashSound.SoundId = "rbxassetid://9072301639"
 splashSound.Volume = 1
 splashSound.Looped = false
 splashSound.Parent = splashGui
@@ -43,34 +43,34 @@ task.wait(1.5)
 blur:Destroy()
 splashGui:Destroy()
 
-local _SSX = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
-local _ISD = Instance.new(string.char(83, 111, 117, 110, 100))
-introSound.SoundId = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 53, 55, 57, 55, 53, 57, 53, 48, 57, 56)
+local SoundService = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
+local _sndIntro = Instance.new(string.char(83, 111, 117, 110, 100))
+introSound.SoundId = "rbxassetid://5797595098"
 introSound.Volume = 1
 introSound.PlayOnRemove = false
 introSound.Parent = SoundService
 introSound:Play()
 
-local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
-local _LX = game:GetService(string.char(76, 105, 103, 104, 116, 105, 110, 103))
+local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+local Lighting = game:GetService(string.char(76, 105, 103, 104, 116, 105, 110, 103))
 local Players = game:GetService(string.char(80, 108, 97, 121, 101, 114, 115))
-local _PX = Players.LocalPlayer
+local player = Players.LocalPlayer
 local PlayerGui = player:WaitForChild(string.char(80, 108, 97, 121, 101, 114, 71, 117, 105))
 
-local _BLR = Instance.new(string.char(66, 108, 117, 114, 69, 102, 102, 101, 99, 116))
+local blur = Instance.new(string.char(66, 108, 117, 114, 69, 102, 102, 101, 99, 116))
 blur.Size = 0
 blur.Parent = Lighting
 
-local _SG = Instance.new(string.char(83, 99, 114, 101, 101, 110, 71, 117, 105), PlayerGui)
+local ScreenGui = Instance.new(string.char(83, 99, 114, 101, 101, 110, 71, 117, 105), PlayerGui)
 ScreenGui.Name = string.char(83, 99, 114, 105, 112, 116, 67, 104, 111, 111, 115, 101, 114, 71, 117, 105)
 ScreenGui.ResetOnSpawn = false
 
-local _CN = Instance.new(string.char(70, 114, 97, 109, 101), ScreenGui)
+local _c1 = Instance.new(string.char(70, 114, 97, 109, 101), ScreenGui)
 container.BackgroundTransparency = 1
 container.Size = UDim2.new(1, 0, 1, 0)
 
-local asset1 = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 57, 52, 50, 52, 53, 51, 56, 52, 56, 50, 57, 48, 52, 49)
-local asset2 = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 49, 48, 48, 53, 53, 52, 54, 57, 56, 54, 57, 52, 54, 49, 48)
+local asset1 = "rbxassetid://94245384829041"
+local asset2 = "rbxassetid://100554698694610"
 
 local function createAssetButton(imageId)
 	local btn = Instance.new(string.char(73, 109, 97, 103, 101, 66, 117, 116, 116, 111, 110))
@@ -85,8 +85,8 @@ local function createAssetButton(imageId)
 	return btn
 end
 
-local _B1 = createAssetButton(asset1)
-local _B2 = createAssetButton(asset2)
+local _b1 = createAssetButton(asset1)
+local _b2 = createAssetButton(asset2)
 
 -- Fade in blur and buttons slide out + fade in
 TweenService:Create(blur, TweenInfo.new(0.5), {Size = 20}):Play()
@@ -126,11 +126,11 @@ end
 -- Define the two scripts
 local function runScript1()
 	print(string.char(82, 117, 110, 110, 105, 110, 103, 32, 83, 99, 114, 105, 112, 116, 32, 49, 46, 46, 46))
-local _SSX = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
+local SoundService = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
 local RunService = game:GetService(string.char(82, 117, 110, 83, 101, 114, 118, 105, 99, 101))
 
-local _SSD = Instance.new(string.char(83, 111, 117, 110, 100))
-StartupSound.SoundId = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 55, 52, 56, 49, 49, 57, 51, 53, 54, 48)
+local _sndStartup = Instance.new(string.char(83, 111, 117, 110, 100))
+StartupSound.SoundId = "rbxassetid://7481193560"
 StartupSound.Volume = 1
 StartupSound.Parent = SoundService
 
@@ -157,8 +157,8 @@ end
 StartupSound.Ended:Connect(function()
     fadeOutSound(StartupSound, 2) -- 2 seconds fade out
 end)
-local _NTFH = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47, 47, 114, 97, 119, 46, 103, 105, 116, 104, 117, 98, 117, 115, 101, 114, 99, 111, 110, 116, 101, 110, 116, 46, 99, 111, 109, 47, 66, 111, 99, 117, 115, 76, 117, 107, 101, 47, 85, 73, 47, 109, 97, 105, 110, 47, 83, 84, 88, 47, 77, 111, 100, 117, 108, 101, 46, 76, 117, 97)))()
-local _NTF = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47, 47, 114, 97, 119, 46, 103, 105, 116, 104, 117, 98, 117, 115, 101, 114, 99, 111, 110, 116, 101, 110, 116, 46, 99, 111, 109, 47, 66, 111, 99, 117, 115, 76, 117, 107, 101, 47, 85, 73, 47, 109, 97, 105, 110, 47, 83, 84, 88, 47, 67, 108, 105, 101, 110, 116, 46, 76, 117, 97)))()
+local _ntfHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local _ntf = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
        {Title = string.char(66, 121, 32, 70, 97, 116, 104, 101, 114, 32, 82, 105, 120, 104, 117, 44, 32, 73, 110, 115, 116, 97, 32, 73, 68, 32, 126, 32, 80, 118, 116, 114, 105, 120, 104, 117), Description = string.char(70, 111, 110, 116, 32, 80, 114, 111, 118, 105, 100, 101, 100, 32, 66, 121, 32, 76, 105, 109, 111, 44, 32, 121, 111, 117, 116, 117, 98, 101, 126, 32, 76, 117, 118, 76, 105, 109, 111, 50)},
        {OutlineColor = Color3.fromRGB(0, 0, 0), Time = 8, Type = string.char(100, 101, 102, 97, 117, 108, 116)}
@@ -167,7 +167,7 @@ local _NTF = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47
 local G2L = {}
 G2L[string.char(49)] = Instance.new(string.char(83, 99, 114, 101, 101, 110, 71, 117, 105), game:GetService(string.char(67, 111, 114, 101, 71, 117, 105)));
 G2L[string.char(50)] = Instance.new(string.char(70, 114, 97, 109, 101), G2L[string.char(49)])
-local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
 
 -- Set starting state (small and transparent)
 G2L[string.char(50)].Size = UDim2.new(0, 0, 0, 0)
@@ -540,7 +540,7 @@ local function C_14()
     -- Find the special ImageLabel
     local specialImage
     for _, child in ipairs(main:GetDescendants()) do
-        if child:IsA(string.char(73, 109, 97, 103, 101, 76, 97, 98, 101, 108)) and child.Image == string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 49, 48, 54, 54, 50, 56, 49, 50, 51, 57, 50, 48, 55, 57, 54) then
+        if child:IsA(string.char(73, 109, 97, 103, 101, 76, 97, 98, 101, 108)) and child.Image == "rbxassetid://106628123920796" then
             specialImage = child
             break
         end
@@ -605,7 +605,7 @@ local function C_18()
     local tick = button:WaitForChild(string.char(84, 105, 99, 107))
     local keepText = false -- Start UNCHECKED
 
-    local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+    local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
     local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
     local function updateTick()
@@ -640,11 +640,11 @@ end
 
 local function runScript2()
 	print(string.char(82, 117, 110, 110, 105, 110, 103, 32, 83, 99, 114, 105, 112, 116, 32, 50, 46, 46, 46))
-local _SSX = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
+local SoundService = game:GetService(string.char(83, 111, 117, 110, 100, 83, 101, 114, 118, 105, 99, 101))
 local RunService = game:GetService(string.char(82, 117, 110, 83, 101, 114, 118, 105, 99, 101))
 
-local _SSD = Instance.new(string.char(83, 111, 117, 110, 100))
-StartupSound.SoundId = string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 53, 48, 54, 48, 48, 49, 54, 56, 49)
+local _sndStartup = Instance.new(string.char(83, 111, 117, 110, 100))
+StartupSound.SoundId = "rbxassetid://506001681"
 StartupSound.Volume = 1
 StartupSound.Parent = SoundService
 
@@ -671,8 +671,8 @@ end
 StartupSound.Ended:Connect(function()
     fadeOutSound(StartupSound, 2) -- 2 seconds fade out
 end)
-local _NTFH = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47, 47, 114, 97, 119, 46, 103, 105, 116, 104, 117, 98, 117, 115, 101, 114, 99, 111, 110, 116, 101, 110, 116, 46, 99, 111, 109, 47, 66, 111, 99, 117, 115, 76, 117, 107, 101, 47, 85, 73, 47, 109, 97, 105, 110, 47, 83, 84, 88, 47, 77, 111, 100, 117, 108, 101, 46, 76, 117, 97)))()
-local _NTF = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47, 47, 114, 97, 119, 46, 103, 105, 116, 104, 117, 98, 117, 115, 101, 114, 99, 111, 110, 116, 101, 110, 116, 46, 99, 111, 109, 47, 66, 111, 99, 117, 115, 76, 117, 107, 101, 47, 85, 73, 47, 109, 97, 105, 110, 47, 83, 84, 88, 47, 67, 108, 105, 101, 110, 116, 46, 76, 117, 97)))()
+local _ntfHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local _ntf = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
     Notification:Notify(
        {Title = string.char(66, 121, 32, 70, 97, 116, 104, 101, 114, 32, 82, 105, 120, 104, 117, 44, 32, 73, 110, 115, 116, 97, 32, 73, 68, 32, 126, 32, 80, 118, 116, 114, 105, 120, 104, 117), Description = string.char(70, 111, 110, 116, 32, 80, 114, 111, 118, 105, 100, 101, 100, 32, 66, 121, 32, 76, 105, 109, 111, 44, 32, 121, 111, 117, 116, 117, 98, 101, 126, 32, 76, 117, 118, 76, 105, 109, 111, 50)},
        {OutlineColor = Color3.fromRGB(0, 0, 0), Time = 8, Type = string.char(100, 101, 102, 97, 117, 108, 116)}
@@ -681,7 +681,7 @@ local _NTF = loadstring(game:HttpGet(string.char(104, 116, 116, 112, 115, 58, 47
 local G2L = {}
 G2L[string.char(49)] = Instance.new(string.char(83, 99, 114, 101, 101, 110, 71, 117, 105), game:GetService(string.char(67, 111, 114, 101, 71, 117, 105)));
 G2L[string.char(50)] = Instance.new(string.char(70, 114, 97, 109, 101), G2L[string.char(49)])
-local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
 
 -- Set starting state (small and transparent)
 G2L[string.char(50)].Size = UDim2.new(0, 0, 0, 0)
@@ -1056,7 +1056,7 @@ local function C_14()
     -- Find the special ImageLabel
     local specialImage
     for _, child in ipairs(main:GetDescendants()) do
-        if child:IsA(string.char(73, 109, 97, 103, 101, 76, 97, 98, 101, 108)) and child.Image == string.char(114, 98, 120, 97, 115, 115, 101, 116, 105, 100, 58, 47, 47, 49, 51, 53, 57, 51, 57, 48, 57, 50, 57, 52, 54, 50, 51, 51) then
+        if child:IsA(string.char(73, 109, 97, 103, 101, 76, 97, 98, 101, 108)) and child.Image == "rbxassetid://135939092946233" then
             specialImage = child
             break
         end
@@ -1121,7 +1121,7 @@ local function C_18()
     local tick = button:WaitForChild(string.char(84, 105, 99, 107))
     local keepText = false -- Start UNCHECKED
 
-    local _TSX = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
+    local TweenService = game:GetService(string.char(84, 119, 101, 101, 110, 83, 101, 114, 118, 105, 99, 101))
     local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
     local function updateTick()
